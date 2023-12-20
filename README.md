@@ -81,4 +81,14 @@ This is also a behavioral description. One possible gate-level realization is sh
 
 ![Screenshot 2023-12-20 205615](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/4416cd6e-5d08-4e0e-98bd-c66ed4c748c3)
 
+Note:
 
+The "assign" statement in Verilog signifies continuous assignment, updating the variable on the left-hand side (LHS) whenever the expression on the right-hand side (RHS) changes.
+
+```verilog
+assign variable = expression;
+```
+- `LHS Requirement:` The LHS must be a "net" type variable, usually a "wire" in Verilog, representing signals or interconnections.
+- `RHS Content:` The RHS can consist of both "register" and "net" type variables, allowing for the construction of complex expressions and logic.
+- `Placement in Modules:` Verilog modules can contain any number of "assign" statements. Typically, they are positioned at the beginning after the port declarations, contributing to a structured code organization.
+- `Behavioral Design Style:` The "assign" statement embodies a behavioral design style, commonly used for modeling combinational circuits. It succinctly describes how signals are updated based on logical conditions within the module.
