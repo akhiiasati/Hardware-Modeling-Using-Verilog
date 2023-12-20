@@ -1,5 +1,6 @@
 # Hardware Modeling Using Verilog
 # Week 2
+## Contents
 - [Concept of Verilog Module](#concept-of-verilog-module)
   - [Verilog Module Structure](#verilog-module-structure)
 
@@ -44,4 +45,40 @@ module module_name (list_of_ports);
 
 endmodule
 ```
-### Verilog Module Structure
+### Examples:
+```verilog
+// A simple AND function
+
+module simpleand (f, x, y);
+  input x, y;
+  output f;
+  assign f = x & y;
+endmodule
+```
+
+This Verilog code represents a behavioral description of a simple AND function. The module `simpleand` takes two input signals, `x` and `y`, and produces a single output signal `f` using the bitwise AND operation.
+
+The synthesis tool will determine how to realize the output signal `f`:
+
+1. Using a single AND gate.
+2. Using a NAND gate followed by a NOT gate.
+
+``` verilog
+/* A 2-level combinational circuit */
+
+module two_level (a, b, c, d, f);
+input a, b, c, d;
+output f;
+wire t1, t2; // Intermediate lines!
+assign t1 = a & b;
+assign t2 = ~(c | d);
+assign f = ~(t1 & t2);
+endmodule
+```
+This Verilog code represents a behavioral description of a 2-level combinational circuit. The module `two_level` takes four inputs, `a`, `b`, `c`, and `d`, and produces a single output signal `f` based on the defined logical operations.
+
+This is also a behavioral description. One possible gate-level realization is shown below. The intermediate lines, denoted as `t1` and `t2`, are declared as wire data types to represent the connections between gates.
+
+![Screenshot 2023-12-20 205615](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/4416cd6e-5d08-4e0e-98bd-c66ed4c748c3)
+
+
