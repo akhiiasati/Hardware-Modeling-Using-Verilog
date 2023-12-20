@@ -1,7 +1,7 @@
 # Hardware Modeling Using Verilog
 # Week 2
-- [!Concept of Verilog Module](#concept-of-verilog-module)
-  - [!Verilog Module Structure](#verilog-module-structure)
+- [Concept of Verilog Module](#concept-of-verilog-module)
+  - [Verilog Module Structure](#verilog-module-structure)
 
 ## Concept of Verilog Module
 
