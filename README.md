@@ -1,1 +1,1 @@
-# Hardware-Modeling-Using-Verilog
+# Hardware Modeling Using Verilog
