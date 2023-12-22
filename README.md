@@ -176,53 +176,24 @@ endmodule
 
 ## Net Data Type 
 
-### Purpose and Representation:
+The Net data type in Verilog plays a pivotal role in hardware modeling, acting as a representation of connections between different elements within a digital circuit. These nets are continuously driven by the outputs of the devices they are connected to, dynamically responding to changes in the circuit. By default, nets are treated as 1-bit values unless explicitly declared as vectors, and their default value is "z," indicating a high-impedance or undefined state when not actively driven. Verilog supports various net data types, each tailored for specific use cases in hardware modeling. The "wire" data type stands out as the most common and versatile, widely employed for modeling diverse interconnections in digital circuits.
 
-- ```Description:``` Nets serve as representations of connections between hardware elements in a digital circuit.
-- ```Behavior:``` They are continuously driven by the outputs of the devices they are connected to, reflecting real-time changes in the circuit.
+### Key Points:
 
-### Continuous Driving:
+- Nets in Verilog represent connections between hardware elements in digital circuits.
+- They are continuously driven by the outputs of connected devices, allowing real-time adaptation to circuit changes.
+- Nets default to 1-bit values, with a default value of "z" when not actively driven.
+- Verilog supports various net data types, including:
+  - ```wire```
+  - ```wor```
+  - ```wand```
+  - ```tri```
+  - ```supply0```
+  - ```supply1```
+  - ```... and more.```
+    
+- The ```"wire"``` data type in Verilog is a versatile choice widely used for modeling diverse interconnections in digital circuits.
+- Equivalence between ```"wire"``` and ```"tri"``` allows seamless handling of multiple drivers, with their outputs shorted together when concurrent driving occurs.
+- ```"wor"``` and ```"wand"``` variants enhance logical modeling by inserting OR and AND gates at the connection point, providing flexibility in altering logical operations.
+- Dedicated models ```"supply0"``` and ```"supply1"``` in Verilog precisely represent power supply connections with constant logic values of 0 and 1, respectively. They play a crucial role in accurate power distribution simulation.
 
-- ```Characteristics:``` Nets, such as "a," exemplify continuous driving, where the value of the net is consistently influenced by the output of a specific device (e.g., an AND gate).
-  
-### Data Width and Default Value:
-
-- ```Default Size:``` Nets are 1-bit values by default unless explicitly declared as vectors.
-- ```Default Value:``` The default value of a net is "z," indicating a high-impedance or undefined state when the net is not actively driven.
-
-### Various Net Data Types in Verilog:
-
-- ### Supported Types:
-
-- ```"wire"```
-- ```"wor"```
-- ```"wand"```
-- ```"tri"```
-- ```"supply0"```
-- ```"supply1"```
-etc.
-
-- ```Diverse Usage:``` Each net data type has specific use cases in hardware modeling.
-  
-### Equivalence of "wire" and "tri":
-
-- ```Description:``` "wire" and "tri" are considered equivalent in behavior.
-- ```Behavior in Multiple Drivers:``` When multiple drivers exist, the outputs of "wire" and "tri" are shorted together, facilitating scenarios where multiple sources can drive a signal concurrently.
-
-### Use of "wor" and "wand":
-
-- ```Description:``` "wor" and "wand" variants modify the logical behavior of nets by inserting OR and AND gates, respectively, at the connection point.
-- ```Impact on Logic:``` They enable the coexistence of multiple drivers with altered logical operations.
-
-### Power Supply Modeling:
-
-- ### Models:
-  - ```"supply0"``` models a power supply connection with a constant logic value of 0.
-  - ```"supply1"``` models a power supply connection with a constant logic value of 1.
-
-- ```Application:``` Used to represent and simulate power supply connections in a circuit.
-
-### Common Usage of "wire":
-
-- ```Dominant Type:``` "wire" is the most common and versatile net data type in Verilog.
-- ```Ubiquitous Application:``` Widely used for modeling diverse interconnections in digital circuits.
