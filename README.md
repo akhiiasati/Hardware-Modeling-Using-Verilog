@@ -5,6 +5,7 @@
   - [Verilog Module Structure](#verilog-module-structure)
   - [Examples](#examples)
 - [Verilog Data Types](#verilog-data-types)
+  -  []()
  
 
 ## Concept of Verilog Module
@@ -173,3 +174,55 @@ endmodule
 - Suitable for scenarios where it's necessary to preserve and recall specific information over time.
 - Offers a means of capturing and holding state information within the circuit.  
 
+## Net Data Type 
+
+### Purpose and Representation:
+
+- ```Description:``` Nets serve as representations of connections between hardware elements in a digital circuit.
+- ```Behavior:``` They are continuously driven by the outputs of the devices they are connected to, reflecting real-time changes in the circuit.
+
+### Continuous Driving:
+
+- ```Characteristics:``` Nets, such as "a," exemplify continuous driving, where the value of the net is consistently influenced by the output of a specific device (e.g., an AND gate).
+  
+### Data Width and Default Value:
+
+- ```Default Size:``` Nets are 1-bit values by default unless explicitly declared as vectors.
+- ```Default Value:``` The default value of a net is "z," indicating a high-impedance or undefined state when the net is not actively driven.
+
+### Various Net Data Types in Verilog:
+
+- ### Supported Types:
+
+- ```"wire"```
+- ```"wor"```
+- ```"wand"```
+- ```"tri"```
+- ```"supply0"```
+- ```"supply1"```
+etc.
+
+- ```Diverse Usage:``` Each net data type has specific use cases in hardware modeling.
+  
+### Equivalence of "wire" and "tri":
+
+- ```Description:``` "wire" and "tri" are considered equivalent in behavior.
+- ```Behavior in Multiple Drivers:``` When multiple drivers exist, the outputs of "wire" and "tri" are shorted together, facilitating scenarios where multiple sources can drive a signal concurrently.
+
+### Use of "wor" and "wand":
+
+- ```Description:``` "wor" and "wand" variants modify the logical behavior of nets by inserting OR and AND gates, respectively, at the connection point.
+- ```Impact on Logic:``` They enable the coexistence of multiple drivers with altered logical operations.
+
+### Power Supply Modeling:
+
+- ### Models:
+  - ```"supply0"``` models a power supply connection with a constant logic value of 0.
+  - ```"supply1"``` models a power supply connection with a constant logic value of 1.
+
+- ```Application:``` Used to represent and simulate power supply connections in a circuit.
+
+### Common Usage of "wire":
+
+- ```Dominant Type:``` "wire" is the most common and versatile net data type in Verilog.
+- ```Ubiquitous Application:``` Widely used for modeling diverse interconnections in digital circuits.
