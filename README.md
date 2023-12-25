@@ -271,3 +271,50 @@ endmodule
 ### Behavioral Design:
 ![Screenshot 2023-12-25 142130](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/9feedb48-834a-4c09-acc1-d4205c2c2021)
 
+## Data Values and Signal Strengths in Verilog
+
+Verilog offers a sophisticated system for modeling the behavior of digital circuits, employing four value levels and eight strength levels. These components are vital for accurately representing the dynamics of real hardware.
+
+### Value Levels
+
+| Value | Description              |
+|-------|--------------------------|
+| 0     | Logic 0 state            |
+| 1     | Logic 1 state            |
+| x     | Unknown logic state      |
+| z     | High impedance state     |
+
+
+
+#### Initialization
+- Unconnected Nets:
+  - All unconnected nets are initialized to "z."
+- Register Variables:
+  - All register variables are initialized to "x."
+
+### Signal Strength Levels
+
+| Strength Type | Description                                       | Application                                         |
+|---------------|---------------------------------------------------|-----------------------------------------------------|
+| `supply`      | Driving strength from a power or ground supply   | Power and ground connections (highest strength)     |
+| `strong`      | Strong driving strength                           | Main signal drivers                                |
+| `pull`        | Driving strength of a pull device                | Pull-up or pull-down networks                      |
+| `large`       | Storage strength of a large storage device       | Large storage elements like SRAM cells             |
+| `weak`        | Weak driving strength                             | Weaker signal drivers                              |
+| `medium`      | Storage strength of a medium storage device      | Medium-sized storage elements                      |
+| `small`       | Storage strength of a small storage device       | Small storage elements                             |
+| `highz`       | High impedance state                              | Tri-state buffers, floating states (lowest strength)|
+
+### Strength Resolution
+- Strength Increases:
+  - When two signals of unequal strengths attempt to drive a wire, the stronger signal prevails.
+  - Particularly useful for modeling MOS-level circuits, such as dynamic MOS.
+    
+#### Additional Insights
+
+- Usage in Conflict Resolution: Strength levels are employed to resolve conflicts between signal drivers of different strengths in real circuits.
+- High Impedance Initialization: All unconnected nets are set to "z" during initialization.
+- Register Variable Initialization: All register variables are set to "x" during initialization.
+
+These detailed considerations and the use of strength levels in Verilog enable precise modeling of real-world digital circuit behaviors, offering a nuanced approach to signal interactions and conflicts.
+
