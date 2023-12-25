@@ -1,4 +1,3 @@
-![image](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/f6afc0d5-2280-47aa-9fac-791baacc5b09)# Hardware Modeling Using Verilog
 # Week 2
 ## Contents
 - [Concept of Verilog Module](#concept-of-verilog-module)
