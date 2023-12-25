@@ -1,4 +1,4 @@
-# Hardware Modeling Using Verilog
+![image](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/f6afc0d5-2280-47aa-9fac-791baacc5b09)# Hardware Modeling Using Verilog
 # Week 2
 ## Contents
 - [Concept of Verilog Module](#concept-of-verilog-module)
@@ -196,4 +196,79 @@ The Net data type in Verilog plays a pivotal role in hardware modeling, acting a
 - Equivalence between ```"wire"``` and ```"tri"``` allows seamless handling of multiple drivers, with their outputs shorted together when concurrent driving occurs.
 - ```"wor"``` and ```"wand"``` variants enhance logical modeling by inserting OR and AND gates at the connection point, providing flexibility in altering logical operations.
 - Dedicated models ```"supply0"``` and ```"supply1"``` in Verilog precisely represent power supply connections with constant logic values of 0 and 1, respectively. They play a crucial role in accurate power distribution simulation.
+
+### Examples:
+
+```verilog
+// Module: use_wire
+// Description: Demonstrates the usage of a wire for signal connection and the consequences of conflicting assignments.
+
+module use_wire (A, B, C, D, f);
+  input A, B, C, D; // Input ports A, B, C, D
+  output f;         // Output port f
+  wire f;           // Declaration of wire f
+
+  // Conflicting assignments to f, attempting to simultaneously perform AND and OR operations
+  assign f = A & B;
+  assign f = C | D;
+endmodule
+```
+
+- This module attempts to assign conflicting values to the output signal f.
+- The conflicting assignments lead to undesired behavior, making the output f indeterminate under certain conditions (A=B=1, C=D=0).
+
+### Behavioral Design:
+
+![Screenshot 2023-12-25 141402](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/c20da4a9-d614-4df8-b3ec-acd09d24a09e)
+
+
+```verilog
+// Module: use_wand
+// Description: Similar to use_wire but introduces the wand type for f, attempting to address the issue.
+
+module use_wand (A, B, C, D, f);
+  input A, B, C, D; // Input ports A, B, C, D
+  output f;         // Output port f
+  wand f;           // Declaration of wand f
+
+  // Conflicting assignments to f, attempting to simultaneously perform AND and OR operations
+  assign f = A & B;
+  assign f = C | D;
+endmodule
+```
+
+- This module is similar to use_wire but declares f as a wand (wire with specified logic behavior).
+- The conflicting assignments still lead to undesired behavior.
+
+### Behavioral Design:
+![Screenshot 2023-12-25 141838](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/af4b5633-d86f-40e2-b707-5769ae805fd0)
+
+
+```verilog
+// Module: using_supply_wire
+// Description: Introduces supply lines (supply0 and supply1) and demonstrates their use in logic gate instantiations.
+
+module using_supply_wire (A, B, C, f);
+  input A, B, C;    // Input ports A, B, C
+  output f;         // Output port f
+  supply0 gnd;      // Ground supply
+  supply1 vdd;      // Power supply
+  wire t1, t2;      // Intermediate wires t1 and t2
+  wire f;           // Declaration of wire f
+
+  // NAND gate instantiation with vdd as a power supply
+  nand G1 (t1, vdd, A, B);
+  // XOR gate instantiation with gnd as a ground supply
+  xor G2 (t2, C, gnd);
+  // AND gate instantiation combining t1 and t2
+  and G3 (f, t1, t2);
+endmodule
+```
+
+- This module demonstrates the use of supply lines (supply0 and supply1) in Verilog.
+- Instantiates NAND, XOR, and AND gates with connections to supply lines.
+- Supply0 and Supply1 are used for ground and power connections, respectively.
+
+### Behavioral Design:
+![Screenshot 2023-12-25 142130](https://github.com/akhiiasati/Hardware-Modeling-Using-Verilog/assets/43675821/9feedb48-834a-4c09-acc1-d4205c2c2021)
 
