@@ -318,3 +318,30 @@ Verilog offers a sophisticated system for modeling the behavior of digital circu
 
 These detailed considerations and the use of strength levels in Verilog enable precise modeling of real-world digital circuit behaviors, offering a nuanced approach to signal interactions and conflicts.
 
+## Register Data Type
+
+In Verilog, a **register** is a variable designed to store a value, distinguishing it from a continuously driven "net" that cannot retain any value. Register types in Verilog provide versatility in modeling both sequential and combinational circuit elements, and they may not necessarily map directly to hardware registers during synthesis.
+
+### Supported Register Data Types in Verilog
+
+1. **reg**: Widely used for modeling variables that store values, particularly in actual hardware elements like counters and shift registers.
+
+2. **integer**: Primarily utilized for loop counting in Verilog.
+
+3. **real**: Designed for storing floating-point numbers.
+
+4. **time**: Tracks simulation time but is not used in hardware synthesis.
+
+### "reg" Data Type Specifics
+
+- **Default Value**: The default value of a "reg" is "x."
+- **Synchronization**: It can be assigned a value in synchronism with a clock or asynchronously.
+- **Declaration**: Explicit size specification is necessary, defaulting to 1 bit.
+- **Arithmetic Treatment**: Treated as an unsigned number in arithmetic expressions.
+
+### Declaration Examples
+
+```verilog
+reg x, y;          // Single-bit register variables
+reg [15:0] bus;     // A 16-bit bus
+
